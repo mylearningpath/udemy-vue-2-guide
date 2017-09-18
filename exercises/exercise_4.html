@@ -22,6 +22,35 @@
       background-color: gray;
       width: 50px !important;
     }
+
+    .square {
+      width: 50px;
+      height: 50px;
+      border: 1px solid red;
+    }
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid green;
+    }
+
+    .gray{
+      background-color: grey;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .tomato {
+      background-color: tomato;
+    }
   </style>
 </head>
 <body>
@@ -29,14 +58,14 @@
     <!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
     <div>
       <button @click="startEffect">Start Effect</button>
-      <div id="effect"></div>
+      <div id="effect" :class="effectClasses"></div>
     </div>
     <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
-    <div>I got no class :(</div>
+    <div :class="color">I got no class :(</div>
     <!-- 3) Let the user enter a class (create some example classes) and attach it -->
     <div>
-      <input type="text">
-      <div></div>
+      <input type="text" v-model="color">
+      <div :class=""></div>
     </div>
     <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
     <div>
@@ -61,11 +90,24 @@
     new Vue({
       el: '#exercise',
       data: {
-
+        effectOn: false,
+        color: 'grey',
+        format: 'square'
+      },
+      computed: {
+        effectClasses: function() {
+          return {
+            highlight: this.effectOn,
+            shrink: !this.effectOn
+          };
+        }
       },
       methods: {
         startEffect: function() {
-
+          let vm = this;
+          setInterval(function(){
+            vm.effectOn = !vm.effectOn;
+          }, 2000)
         }
       }
     });
