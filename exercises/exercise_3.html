@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Vue.js Basics - Exercise 1</title>
+  <title>Vue.js Basics - Exercise 3</title>
   <script src="../vue.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
       </div>
       <!-- 2) Watch for changes in the "result" and reset the "value" after 5 seconds (hint: setTimeout(..., 5000) -->
       <div>
-          <input type="text">
+          <input type="text" v-model="resetTimer">
           <p>{{ value }}</p>
       </div>
   </div>
@@ -28,7 +28,21 @@
     new Vue({
       el: '#exercise',
       data: {
-        value: 0
+        value: 0,
+        resetTimer: 5000
+      },
+      computed: {
+        result: function() {
+          return this.value === 37 ? 'done' : 'not there yet';
+        }
+      },
+      watch: {
+        result: function() {
+          let vm = this
+          setTimeout(function(){
+            vm.value = 0;
+          }, vm.resetTimer);
+        }
       }
     });
   </script>
