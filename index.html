@@ -14,7 +14,7 @@
     <ul>
       <li v-for="topic in topics">
         <a v-bind:href="topic.link" target="_blank">
-          topic.title
+          {{topic.title}}
         </a>
       </li>
     </ul>
@@ -23,7 +23,7 @@
     <ul>
       <li v-for="exercise in exercises">
         <a v-bind:href="exercise.link" target="_blank">
-          exercise.title
+          {{exercise.title}}
         </a>
       </li>
     </ul>
@@ -36,7 +36,7 @@
       data: {
         topics: [
           {
-            title: 'events',
+            title: 'Events',
             link: '/topics/events.html'
           }
         ],
