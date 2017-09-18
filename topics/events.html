@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js Basics - Events</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="btnClick">Click Me!</button>
+    <p>Button was clicked {{counter}} time{{ counter != 1 ? 's' : '' }}.</p>
+    <p
+      v-on:mousemove="updatePosition"
+    >Coordinates: {{position.x}} / {{position.y}}
+    - <span v-on:mousemove.stop>DEAD ZONE</span> </p>
+  </div>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        counter: 0,
+        position: {
+          x: 0,
+          y: 0,
+        }
+      },
+      methods: {
+        btnClick() {
+          return this.counter++;
+        },
+        updatePosition(event) {
+          this.position.x = event.clientX;
+          this.position.y = event.clientY;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js Basics</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Basics of Vue.js</h1>
+    <h3>Courses topics:</h3>
+    <ul>
+      <li v-for="topic in topics">
+        <a v-bind:href="topic.link" target="_blank">
+          topic.title
+        </a>
+      </li>
+    </ul>
+
+    <h3>Exercises:</h3>
+    <ul>
+      <li v-for="exercise in exercises">
+        <a v-bind:href="exercise.link" target="_blank">
+          exercise.title
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Vue Instance -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        topics: [
+          {
+            title: 'events',
+            link: '/topics/events.html'
+          }
+        ],
+        exercises: [
+          {
+            title: 'Exercise 1',
+            link: '/exercises/exercise_1.html'
+          },{
+            title: 'Exercise 2',
+            link: '/exercises/exercise_2.html'
+          }
+        ]
+      }
+    });
+  </script>
+</body>
+</html>
