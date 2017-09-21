@@ -55,11 +55,18 @@
               >GIVE UP</button>
           </div>
       </section>
-      <section class="row log">
+      <section class="row log" v-if="battleRegistry.length > 0">
           <div class="small-12 columns">
               <ul>
-                  <li>
-
+                  <li v-for="turn in battleRegistry">
+                    <template v-for="(damage, char) in turn">
+                      <span v-if="char === 'monsterAttack'" class="monster-turn">
+                        MONSTER HITS PLAYER FOR {{damage}}
+                      </span>
+                      <span v-else class="player-turn">
+                        PLAYER HITS MONSTER FOR {{damage}}
+                      </span>
+                    </template>
                   </li>
               </ul>
           </div>
