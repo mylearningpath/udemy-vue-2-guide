@@ -41,6 +41,9 @@
     </template>
     <template v-else>
       <section class="row controls">
+          <div class="small-12 collumns">
+            <small>Player Magic Power: {{playerMana}}</small>
+          </div>
           <div class="small-12 columns">
               <button id="attack"
                 @click="attack()"
