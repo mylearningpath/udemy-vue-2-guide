@@ -11,11 +11,11 @@
   <div id="exercise">
     <!-- 1) Hook up the button to toggle the display of the two paragraphs. Use both v-if and v-show and inspect the elements to see the difference -->
     <div>
-      <button>Toggle</button>
-      <p>You either see me ...</p>
-      <p>...or me</p>
-      <p>You either see me ...</p>
-      <p>...or me</p>
+      <button @click="isShown = !isShown">Toggle</button>
+      <p v-if="isShown">You either see me ...</p>
+      <p v-else="isShown">...or me</p>
+      <p v-show="isShown">You either see me ...</p>
+      <p v-show="!isShown">...or me</p>
     </div>
     <!-- 2) Output an <ul> of array elements of your choice. Also print the index of each element. -->
     <ul>
@@ -38,6 +38,7 @@
     new Vue({
       el: '#exercise',
       data: {
+        isShown: true,
         array: ['Max', 'Anna', 'Chris', 'Manu'],
         myObject: {
           title: 'Lord of the Rings',
