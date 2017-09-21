@@ -5,19 +5,22 @@ new Vue({
     playerHealth: 100,
     monsterHealth: 100,
     playerMana: 5,
-    battleRegistry: []
+    turns: []
   },
   methods: {
     startGame() {
       this.gameIsRunning = true;
       this.playerHealth = 100;
       this.monsterHealth = 100;
-      this.battleRegistry = []
+      this.turns = []
     },
     attack() {
       let damage = this.calculateDamage(3, 10)
       this.monsterHealth -= damage;
-      this.battleRegistry.push({ playerAttack: damage });
+      this.turns.push({
+        isPlayer: true,
+        log: 'Player hits monster for ' + damage
+      });
 
       if (this.checkWin()) {
         return;
@@ -29,7 +32,10 @@ new Vue({
     specialAttack() {
       let damage = this.calculateDamage(5, 20);
       this.monsterHealth -= damage;
-      this.battleRegistry.push({ playerAttack: damage });
+      this.turns.push({
+        isPlayer: true,
+        log: 'Player SUPER hits monster for ' + damage
+      });
       this.playerMana--;
 
       if (this.checkWin()) {
@@ -45,6 +51,11 @@ new Vue({
         this.playerHealth = 100;
       }
 
+      this.turns.push({
+        isPlayer: true,
+        log: 'Player heals for 15'
+      });
+
       this.playerMana--;
 
       this.monsterAttacks();
@@ -55,7 +66,10 @@ new Vue({
     monsterAttacks() {
       let damage = this.calculateDamage(5, 12);
       this.playerHealth -= damage;
-      this.battleRegistry.push({ monsterAttack: damage });
+      this.turns.push({
+        isPlayer: true,
+        log: 'Monster hits player for ' + damage 
+      });
       this.checkWin();
     },
     calculateDamage(min, max) {
