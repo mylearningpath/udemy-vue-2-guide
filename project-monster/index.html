@@ -15,8 +15,8 @@
                 <div
                   class="healthbar text-center"
                   style="background-color: green; margin: 0; color: white;"
-                  :style="{ width: usersHealth + '%' }">
-                  {{usersHealth}}
+                  :style="{ width: playerHealth + '%' }">
+                  {{playerHealth}}
                 </div>
             </div>
         </div>
@@ -47,14 +47,14 @@
               >ATTACK</button>
               <button id="special-attack"
                 @click="specialAttack()"
-                :disabled="usersMana <= 0"
+                :disabled="playerMana <= 0"
               >SPECIAL ATTACK</button>
               <button id="heal"
                 @click="heal()"
-                :disabled="usersMana <= 0"
+                :disabled="playerMana <= 0"
               >HEAL</button>
               <button id="give-up"
-                @click="gameIsRunning = !gameIsRunning"
+                @click="giveup()"
               >GIVE UP</button>
           </div>
       </section>
