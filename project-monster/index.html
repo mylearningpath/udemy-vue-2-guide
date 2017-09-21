@@ -39,10 +39,20 @@
     <template v-else>
       <section class="row controls">
           <div class="small-12 columns">
-              <button id="attack">ATTACK</button>
-              <button id="special-attack">SPECIAL ATTACK</button>
-              <button id="heal">HEAL</button>
-              <button id="give-up" @click="gameStarted = !gameStarted">GIVE UP</button>
+              <button id="attack"
+                @click="attack()"
+              >ATTACK</button>
+              <button id="special-attack"
+                @click="specialAttack()"
+                :disabled="usersMana <= 0"
+              >SPECIAL ATTACK</button>
+              <button id="heal"
+                @click="heal()"
+                :disabled="usersMana <= 0"
+              >HEAL</button>
+              <button id="give-up"
+                @click="gameStarted = !gameStarted"
+              >GIVE UP</button>
           </div>
       </section>
       <section class="row log">
