@@ -1,13 +1,19 @@
 new Vue({
   el: '#app',
   data: {
-    gameStarted: false,
+    gameIsRunning: false,
     usersHealth: 100,
     usersMana: 5,
     monsterHealth: 100,
     battleRegistry: []
   },
   methods: {
+    startGame() {
+      this.gameIsRunning = true;
+      this.usersHealth = 100;
+      this.monsterHealth = 100;
+      this.battleRegistry = []
+    },
     randomPoints() {
       return (Math.floor(Math.random() * 10) + 1)
     },

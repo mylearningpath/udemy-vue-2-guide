@@ -12,9 +12,10 @@
         <div class="small-6 columns">
             <h1 class="text-center">YOU</h1>
             <div class="healthbar">
-                <div class="healthbar text-center"
-                :style="{ width: usersHealth + '%' }"
-                style="background-color: green; margin: 0; color: white;">
+                <div
+                  class="healthbar text-center"
+                  style="background-color: green; margin: 0; color: white;"
+                  :style="{ width: usersHealth + '%' }">
                   {{usersHealth}}
                 </div>
             </div>
@@ -22,17 +23,19 @@
         <div class="small-6 columns">
             <h1 class="text-center">MONSTER</h1>
             <div class="healthbar">
-                <div class="healthbar text-center"
-                :style="{ width: monsterHealth + '%' }" style="background-color: green; margin: 0; color: white;">
+                <div
+                  class="healthbar text-center"
+                  style="background-color: green; margin: 0; color: white;"
+                  :style="{ width: monsterHealth + '%' }">
                   {{monsterHealth}}
                 </div>
             </div>
         </div>
     </section>
-    <template v-if="!gameStarted">
+    <template v-if="!gameIsRunning">
       <section class="row controls">
         <div class="small-12 columns">
-          <button id="start-game" @click="gameStarted = !gameStarted">START NEW GAME</button>
+          <button id="start-game" @click="startGame">START NEW GAME</button>
         </div>
       </section>
     </template>
@@ -51,7 +54,7 @@
                 :disabled="usersMana <= 0"
               >HEAL</button>
               <button id="give-up"
-                @click="gameStarted = !gameStarted"
+                @click="gameIsRunning = !gameIsRunning"
               >GIVE UP</button>
           </div>
       </section>
